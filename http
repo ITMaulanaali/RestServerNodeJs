@@ -1,0 +1,29 @@
+const http = require('http');
+const fs = require('fs');
+const port = 4500;
+
+function pertamaKaliMenjalankan(){
+    console.log("Halo, server saat ini berjalan di port: " + port);
+}
+
+function kelolaPermintaan(request, response){
+    console.log(request);
+    response.setHeader('Content-Type','text/html');
+    response.statusCode = 200;
+    response.end("<h1>hai kembali</h1>");
+}
+
+http.createServer(kelolaPermintaan).listen(port, pertamaKaliMenjalankan);
+
+/**
+ * Meskipun ada banyak property pada request http. Sebenarnya ada 4 yang harus menjadi konsen yaitu:
+ * - http method
+ * - request path atau url
+ * - request header
+ * - request body
+ * 
+ * Sedangkan pada response adalah
+ * - response code atau status line
+ * - response header
+ * - response body
+ */
